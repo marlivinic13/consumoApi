@@ -1,35 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-
-    <h1>Cachorro aleatório: </h1> <!-- Criar um título para com o conteúdo "Cachorro aleatório"-->
-    <span id="spanDog"></span> <!-- tag span para guardar a imagem-->
-    <button type="button" onclick="consumirApi()">Gerar nova imagem</button> <!--Botão para chamar a função consumirApi()-->
-
-    <script> //inicio do código js 
-        async function consumirApi(){ //cria uma função assincrona com o nome "consumirApi"
-            const resp = await fetch("https://dog.ceo/api/breeds/image/random") //pegar a resposta da api dog.ceo
-            const respJson = await resp.json()
-            const urlImg = respJson.message
-
-            const img = document.createElement('img')
-            img.src = urlImg
-            img.style.width = '200px'
-            img.style.height = '200px'
-            img.style.display = 'block'
-            
-            const span = document.getElementById("spanDog")
-
-            span.innerHTML=""
-            span.appendChild(img)
-
-            console.log(respJson)
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
         }
-    </script>
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+        }
+        
+        .container{
+            display: block;
+            margin-left: 900px;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        span{
+            margin-top: 10px;
+        }
+
+        button{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Cachorro aleatório: </h1> <!-- Criar um título para com o conteúdo "Cachorro aleatório"-->
+            <span id="spanDog"></span> <!-- tag span para guardar a imagem-->
+            <button type="button" onclick="consumirApi()">Gerar nova imagem</button>
+            <!--Botão para chamar a função consumirApi()-->
+
+            <script> //inicio do código js 
+                async function consumirApi() { //cria uma função assincrona com o nome "consumirApi"
+                    const resp = await fetch("https://dog.ceo/api/breeds/image/random") //pegar a resposta da api dog.ceo
+                    const respJson = await resp.json()
+                    const urlImg = respJson.message
+
+                    const img = document.createElement('img')
+                    img.src = urlImg
+                    img.style.width = '400px'
+                    img.style.height = '400px'
+                    img.style.display = 'block'
+
+                    const span = document.getElementById("spanDog")
+
+                    span.innerHTML = ""
+                    span.appendChild(img)
+
+                    console.log(respJson)
+                }
+            </script>
+        </div>
+    </main>
 </body>
+
 </html>
